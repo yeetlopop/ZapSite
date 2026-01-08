@@ -30,6 +30,7 @@
         <li><a href="#om-oss">Om Oss</a></li>
         <li><a href="#portfolio">Prosjekter</a></li>
         <li><a href="#priser">Priser</a></li>
+        <li><a href="#tutorial">Lær Koding</a></li>
         <li><a href="#kontakt">Kontakt</a></li>
         <li><a href="#kontakt" class="cta-button">Start Prosjekt</a></li>
       </ul>
@@ -243,6 +244,105 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- Tutorial Section -->
+  <section id="tutorial" class="tutorial">
+    <div class="container">
+      <div class="section-header">
+        <h2>Lær å Lage Nettsider</h2>
+        <p>En interaktiv tutorial som lærer deg grunnleggende HTML og CSS gjennom praktiske oppgaver</p>
+      </div>
+      
+      <div class="tutorial-container">
+        <div class="tutorial-sidebar">
+          <h3>Nivåer</h3>
+          <ul class="tutorial-levels">
+            <li class="level-item active" data-level="1">
+              <span class="level-number">1</span>
+              <div class="level-info">
+                <span class="level-title">Din første heading</span>
+                <span class="level-status">Aktiv</span>
+              </div>
+            </li>
+            <li class="level-item" data-level="2">
+              <span class="level-number">2</span>
+              <div class="level-info">
+                <span class="level-title">Legg til tekst</span>
+                <span class="level-status">Låst</span>
+              </div>
+            </li>
+            <li class="level-item" data-level="3">
+              <span class="level-number">3</span>
+              <div class="level-info">
+                <span class="level-title">Farger og stil</span>
+                <span class="level-status">Låst</span>
+              </div>
+            </li>
+            <li class="level-item" data-level="4">
+              <span class="level-number">4</span>
+              <div class="level-info">
+                <span class="level-title">Bakgrunnsfarge</span>
+                <span class="level-status">Låst</span>
+              </div>
+            </li>
+            <li class="level-item" data-level="5">
+              <span class="level-number">5</span>
+              <div class="level-info">
+                <span class="level-title">Knapper</span>
+                <span class="level-status">Låst</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="tutorial-content">
+          <div class="tutorial-instructions">
+            <h3 id="levelTitle">Nivå 1: Din første heading</h3>
+            <p id="levelDescription">Lær hvordan du lager en overskrift med HTML. Bruk &lt;h1&gt; taggen!</p>
+            <div class="hint-box">
+              <button class="hint-toggle" id="hintToggle">💡 Hint</button>
+              <p class="hint-text" id="hintText">Skriv &lt;h1&gt;Hei Verden!&lt;/h1&gt; i kodeboksen</p>
+            </div>
+          </div>
+
+          <div class="tutorial-editor">
+            <div class="editor-container">
+              <div class="editor-header">
+                <span>HTML Editor</span>
+                <div class="editor-tabs">
+                  <span class="tab active">HTML</span>
+                </div>
+              </div>
+              <textarea id="codeEditor" class="code-input" spellcheck="false" placeholder="Skriv HTML-kode her..."></textarea>
+            </div>
+
+            <div class="preview-container">
+              <div class="editor-header">
+                <span>Forhåndsvisning</span>
+              </div>
+              <div id="previewArea" class="preview-content">
+                <!-- Preview content will appear here -->
+              </div>
+            </div>
+          </div>
+
+          <div class="tutorial-controls">
+            <button class="control-button secondary" id="resetButton">
+              <span>↺ Tilbakestill</span>
+            </button>
+            <button class="control-button primary" id="checkButton">
+              <span>✓ Sjekk koden</span>
+            </button>
+            <button class="control-button success hidden" id="nextButton">
+              <span>Neste nivå →</span>
+            </button>
+          </div>
+
+          <div class="feedback-message" id="feedbackMessage"></div>
+        </div>
+      </div>
+    </div>
   </section><!-- Contact Section -->
   <section id="kontakt" class="contact">
     <div class="container">
@@ -315,7 +415,8 @@
             <li><a href="#tjenester">Tjenester</a></li>
             <li><a href="#om-oss">Om Oss</a></li>
             <li><a href="#priser">Priser</a></li>
-            <li><a href="#kontakt">Kontakt</a></li>
+            <li><a href="#tutorial">Lær Koding</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
           </ul>
         </div>
 

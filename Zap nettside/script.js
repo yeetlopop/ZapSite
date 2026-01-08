@@ -473,3 +473,217 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+// Tutorial System
+class TutorialSystem {
+    constructor() {
+        this.currentLevel = 1;
+        this.maxLevel = 5;
+        this.completedLevels = new Set();
+        
+        this.levels = {
+            1: {
+                title: 'Nivå 1: Din første heading',
+                description: 'Lær hvordan du lager en overskrift med HTML. Bruk <h1> taggen!',
+                hint: 'Skriv <h1>Hei Verden!</h1> i kodeboksen',
+                validator: (code) => {
+                    const cleanCode = code.trim().toLowerCase();
+                    return cleanCode.includes('<h1>') && cleanCode.includes('</h1>') && cleanCode.includes('hei verden');
+                },
+                successMessage: 'Gratulerer! Du har laget din første heading!'
+            },
+            2: {
+                title: 'Nivå 2: Legg til tekst',
+                description: 'Nå skal du legge til et avsnitt under headingen din. Bruk <p> taggen!',
+                hint: 'Skriv <p>Dette er mitt første avsnitt!</p> under h1-elementet',
+                validator: (code) => {
+                    const cleanCode = code.trim().toLowerCase();
+                    return cleanCode.includes('<h1>') && cleanCode.includes('</h1>') && 
+                           cleanCode.includes('<p>') && cleanCode.includes('</p>');
+                },
+                successMessage: 'Fantastisk! Nå har du både en heading og et avsnitt!'
+            },
+            3: {
+                title: 'Nivå 3: Farger og stil',
+                description: 'Legg til en farge på headingen din med style-attributtet. Bruk "color: blue;"!',
+                hint: 'Endre h1-taggen til: <h1 style="color: blue;">Hei Verden!</h1>',
+                validator: (code) => {
+                    const cleanCode = code.toLowerCase();
+                    return cleanCode.includes('<h1') && cleanCode.includes('style=') && cleanCode.includes('color:');
+                },
+                successMessage: 'Bra jobba! Du har brukt inline CSS for å endre farge!'
+            },
+            4: {
+                title: 'Nivå 4: Bakgrunnsfarge',
+                description: 'Legg til bakgrunnsfarge på avsnittet ditt. Bruk "background-color: lightgray;"!',
+                hint: 'Legg til style på p-taggen: <p style="background-color: lightgray;">',
+                validator: (code) => {
+                    const cleanCode = code.toLowerCase();
+                    return cleanCode.includes('<p') && cleanCode.includes('style=') && cleanCode.includes('background-color:');
+                },
+                successMessage: 'Utmerket! Nå har du styling på flere elementer!'
+            },
+            5: {
+                title: 'Nivå 5: Knapper',
+                description: 'Lag din første knapp med <button> taggen. Gi den en farge med style!',
+                hint: 'Skriv <button style="background-color: green; color: white;">Klikk meg!</button>',
+                validator: (code) => {
+                    const cleanCode = code.toLowerCase();
+                    return cleanCode.includes('<button') && cleanCode.includes('</button>') && 
+                           cleanCode.includes('style=') && cleanCode.includes('background-color:');
+                },
+                successMessage: 'Fantastisk! Du er nå en HTML-mester! 🎉'
+            }
+        };
+        
+        this.init();
+    }
+    
+    init() {
+        this.codeEditor = document.getElementById('codeEditor');
+        this.previewArea = document.getElementById('previewArea');
+        this.levelTitle = document.getElementById('levelTitle');
+        this.levelDescription = document.getElementById('levelDescription');
+        this.hintText = document.getElementById('hintText');
+        this.hintToggle = document.getElementById('hintToggle');
+        this.checkButton = document.getElementById('checkButton');
+        this.nextButton = document.getElementById('nextButton');
+        this.resetButton = document.getElementById('resetButton');
+        this.feedbackMessage = document.getElementById('feedbackMessage');
+        
+        if (!this.codeEditor) return;
+        
+        this.setupEventListeners();
+        this.loadLevel(1);
+    }
+    
+    setupEventListeners() {
+        this.codeEditor.addEventListener('input', () => this.updatePreview());
+        
+        this.checkButton.addEventListener('click', () => this.checkCode());
+        
+        this.nextButton.addEventListener('click', () => {
+            if (this.currentLevel < this.maxLevel) {
+                this.loadLevel(this.currentLevel + 1);
+            }
+        });
+        
+        this.resetButton.addEventListener('click', () => this.resetLevel());
+        
+        this.hintToggle.addEventListener('click', () => {
+            this.hintText.classList.toggle('show');
+            this.hintToggle.textContent = this.hintText.classList.contains('show') ? '✓ Hint' : '💡 Hint';
+        });
+        
+        // Level selection
+        document.querySelectorAll('.level-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const level = parseInt(item.dataset.level);
+                if (!item.classList.contains('locked')) {
+                    this.loadLevel(level);
+                }
+            });
+        });
+    }
+    
+    loadLevel(levelNum) {
+        this.currentLevel = levelNum;
+        const level = this.levels[levelNum];
+        
+        // Update UI
+        this.levelTitle.textContent = level.title;
+        this.levelDescription.textContent = level.description;
+        this.hintText.textContent = level.hint;
+        this.codeEditor.value = '';
+        this.previewArea.innerHTML = '';
+        this.feedbackMessage.classList.remove('show');
+        this.hintText.classList.remove('show');
+        this.hintToggle.textContent = '💡 Hint';
+        
+        // Update button states
+        this.checkButton.classList.remove('hidden');
+        this.nextButton.classList.add('hidden');
+        
+        // Update level indicators
+        this.updateLevelIndicators();
+    }
+    
+    updateLevelIndicators() {
+        document.querySelectorAll('.level-item').forEach(item => {
+            const level = parseInt(item.dataset.level);
+            const levelStatus = item.querySelector('.level-status');
+            
+            item.classList.remove('active', 'completed');
+            
+            if (level === this.currentLevel) {
+                item.classList.add('active');
+                levelStatus.textContent = 'Aktiv';
+            } else if (this.completedLevels.has(level)) {
+                item.classList.add('completed');
+                levelStatus.textContent = 'Fullført ✓';
+            } else if (level > this.currentLevel) {
+                item.classList.add('locked');
+                levelStatus.textContent = 'Låst';
+            } else {
+                levelStatus.textContent = 'Klar';
+            }
+        });
+    }
+    
+    updatePreview() {
+        const code = this.codeEditor.value;
+        this.previewArea.innerHTML = code;
+    }
+    
+    checkCode() {
+        const code = this.codeEditor.value.trim();
+        const level = this.levels[this.currentLevel];
+        
+        if (!code) {
+            this.showFeedback('Vennligst skriv noe i kodeboksen!', 'error');
+            return;
+        }
+        
+        if (level.validator(code)) {
+            this.completedLevels.add(this.currentLevel);
+            this.showFeedback(level.successMessage, 'success');
+            this.checkButton.classList.add('hidden');
+            
+            if (this.currentLevel < this.maxLevel) {
+                this.nextButton.classList.remove('hidden');
+            }
+            
+            this.updateLevelIndicators();
+            this.updatePreview();
+        } else {
+            this.showFeedback('Ikke helt riktig. Prøv igjen eller bruk hintet!', 'error');
+        }
+    }
+    
+    resetLevel() {
+        this.codeEditor.value = '';
+        this.previewArea.innerHTML = '';
+        this.feedbackMessage.classList.remove('show');
+        this.checkButton.classList.remove('hidden');
+        this.nextButton.classList.add('hidden');
+    }
+    
+    showFeedback(message, type) {
+        this.feedbackMessage.textContent = message;
+        this.feedbackMessage.className = `feedback-message show ${type}`;
+        
+        // Auto-hide success messages after 3 seconds
+        if (type === 'success') {
+            setTimeout(() => {
+                this.feedbackMessage.classList.remove('show');
+            }, 3000);
+        }
+    }
+}
+
+// Initialize tutorial when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Small delay to ensure all elements are loaded
+    setTimeout(() => {
+        window.tutorialSystem = new TutorialSystem();
+    }, 500);
+});

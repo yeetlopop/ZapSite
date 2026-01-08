@@ -1201,3 +1201,445 @@ footer {
         font-size: 0.9rem;
     }
 }
+/* Tutorial Section Styles */
+.tutorial {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.tutorial::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,138.7C960,139,1056,117,1152,96C1248,75,1344,53,1392,42.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+    background-size: cover;
+}
+
+.tutorial .section-header {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tutorial .section-header h2 {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tutorial-container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Tutorial Sidebar */
+.tutorial-sidebar {
+    background: var(--bg-white);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-lg);
+    height: fit-content;
+}
+
+.tutorial-sidebar h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.75rem;
+}
+
+.tutorial-levels {
+    list-style: none;
+}
+
+.level-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-radius: 12px;
+    background: var(--bg-light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.level-item:hover:not(.locked) {
+    background: #e0e7ff;
+    transform: translateX(5px);
+}
+
+.level-item.active {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.level-item.locked {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.level-item.locked:hover {
+    transform: none;
+}
+
+.level-number {
+    width: 36px;
+    height: 36px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.level-item.locked .level-number {
+    background: var(--text-light);
+}
+
+.level-item.active .level-number {
+    background: white;
+    color: var(--primary-color);
+}
+
+.level-info {
+    flex: 1;
+}
+
+.level-title {
+    display: block;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+
+.level-status {
+    display: block;
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.level-item.completed .level-status {
+    color: #10b981;
+    font-weight: 500;
+}
+
+/* Tutorial Content */
+.tutorial-content {
+    background: var(--bg-white);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.tutorial-instructions {
+    margin-bottom: 2rem;
+}
+
+.tutorial-instructions h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.tutorial-instructions p {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+.hint-box {
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.hint-toggle {
+    background: none;
+    border: none;
+    color: #f59e0b;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0;
+    margin-bottom: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hint-toggle:hover {
+    text-decoration: underline;
+}
+
+.hint-text {
+    display: none;
+    margin: 0;
+    color: #92400e;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.hint-text.show {
+    display: block;
+}
+
+/* Tutorial Editor */
+.tutorial-editor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.editor-container,
+.preview-container {
+    background: var(--bg-light);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.editor-header {
+    background: var(--text-dark);
+    color: white;
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.editor-tabs {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.editor-tabs .tab {
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.editor-tabs .tab.active {
+    background: var(--primary-color);
+}
+
+.code-input {
+    width: 100%;
+    height: 300px;
+    padding: 1rem;
+    border: none;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    resize: vertical;
+    outline: none;
+}
+
+.code-input::placeholder {
+    color: #6b7280;
+}
+
+.preview-content {
+    height: 300px;
+    padding: 2rem;
+    background: white;
+    overflow: auto;
+    border: 1px solid var(--border-color);
+}
+
+.preview-content h1,
+.preview-content h2,
+.preview-content h3 {
+    margin: 0.5rem 0;
+}
+
+.preview-content p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+.preview-content button {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+/* Tutorial Controls */
+.tutorial-controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.control-button {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.control-button.secondary {
+    background: var(--bg-light);
+    color: var(--text-dark);
+    border: 2px solid var(--border-color);
+}
+
+.control-button.secondary:hover {
+    background: #e5e7eb;
+    transform: translateY(-2px);
+}
+
+.control-button.primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.control-button.primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.control-button.success {
+    background: #10b981;
+    color: white;
+}
+
+.control-button.success:hover {
+    background: #059669;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.control-button.hidden {
+    display: none;
+}
+
+/* Feedback Message */
+.feedback-message {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    display: none;
+}
+
+.feedback-message.show {
+    display: block;
+    animation: slideIn 0.3s ease;
+}
+
+.feedback-message.success {
+    background: #d1fae5;
+    color: #065f46;
+    border-left: 4px solid #10b981;
+}
+
+.feedback-message.error {
+    background: #fee2e2;
+    color: #991b1b;
+    border-left: 4px solid #ef4444;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design for Tutorial */
+@media (max-width: 1024px) {
+    .tutorial-container {
+        grid-template-columns: 1fr;
+    }
+
+    .tutorial-sidebar {
+        order: 2;
+    }
+
+    .tutorial-content {
+        order: 1;
+    }
+
+    .tutorial-editor {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .tutorial {
+        padding: 4rem 0;
+    }
+
+    .tutorial .section-header h2 {
+        font-size: 2.2rem;
+    }
+
+    .tutorial-controls {
+        flex-direction: column;
+    }
+
+    .code-input,
+    .preview-content {
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tutorial .section-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .tutorial-sidebar,
+    .tutorial-content {
+        padding: 1rem;
+    }
+
+    .code-input,
+    .preview-content {
+        height: 200px;
+        padding: 1rem;
+    }
+}
