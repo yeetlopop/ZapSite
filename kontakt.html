@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kontakt ZapSite UB for profesjonelle nettsider. Send oss en melding eller ring oss for en uforpliktende prat.">
+    <meta name="keywords" content="kontakt, kontakt oss, henvendelse, nettsider">
+    <title>Kontakt Oss | ZapSite UB</title>
+    <link rel="stylesheet" href="global.css">
+    <style>
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition-fast);
+            background-color: white;
+            color: var(--text-dark);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .error-message {
+            display: block;
+            color: var(--accent-error);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+        
+        .form-success {
+            margin-top: var(--spacing-md);
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .contact-info-item .icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-info-item h4 {
+            margin: 0 0 0.5rem 0;
+            color: var(--text-dark);
+        }
+        
+        .contact-info-item p {
+            margin: 0;
+            color: var(--text-medium);
+        }
+        
+        .contact-info-item a {
+            color: var(--accent-blue);
+        }
+        
+        .contact-info-item a:hover {
+            color: var(--accent-purple);
+        }
+    </style>
+<script src="global.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-z-square">Z</div>
+                <span class="logo-text">ZapSite UB</span>
+            </a>
+            <button class="mobile-menu-toggle">☰</button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Hjem</a></li>
+                <li><a href="tjenester.html">Tjenester</a></li>
+                <li><a href="priser.html">Priser</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="mentorer.html">Mentorer</a></li>
+                <li><a href="tutorial.html">Tutorial</a></li>
+                <li><a href="om-oss.html">Om oss</a></li>
+                <li><a href="kontakt.html" class="cta-button">Kontakt oss</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="container text-center">
+            <h1 style="color: white; font-size: 3rem; margin-bottom: 1rem;">Kontakt Oss</h1>
+            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.25rem; max-width: 700px; margin: 0 auto;">Vi hjelper deg med å skape en profesjonell nettside. Send oss en melding eller kontakt oss direkte.</p>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="section section-white">
+        <div class="container">
+            <div class="grid grid-2">
+                <!-- Contact Form -->
+                <div class="fade-in">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Send Oss en Melding</h2>
+                            <p>Fyll ut skjemaet og vi svarer så snart som mulig</p>
+                        </div>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Navn *</label>
+                                <input type="text" id="name" name="name" required placeholder="Ditt navn">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="company">Bedrift</label>
+                                <input type="text" id="company" name="company" placeholder="Bedriftens navn (valgfritt)">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">E-post *</label>
+                                <input type="email" id="email" name="email" required placeholder="din@epost.no">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Telefon *</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="+47 000 00 000">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="package">Ønsket pakke</label>
+                                <select id="package" name="package">
+                                    <option value="">Velg pakke</option>
+                                    <option value="basic">Basic (2 499 kr)</option>
+                                    <option value="standard">Standard (4 799 kr)</option>
+                                    <option value="premium">Premium (6 999 kr)</option>
+                                    <option value="custom">Tilpasset løsning</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Melding *</label>
+                                <textarea id="message" name="message" required placeholder="Fortell oss om ditt prosjekt og hva du trenger..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Melding</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="fade-in-delay-1">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Kontaktinformasjon</h2>
+                            <p>Du kan også kontakte oss direkte</p>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="icon">📧</div>
+                            <div>
+                                <h4>E-post</h4>
+                                <p><a href="mailto:zapsiteub@gmail.com">zapsiteub@gmail.com</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="icon">📞</div>
+                            <div>
+                                <h4>Telefon</h4>
+                                <p><a href="tel:+4794979453">+47 949 79 453</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="icon">🏫</div>
+                            <div>
+                                <h4>Skole</h4>
+                                <p>Åssiden videregående skole</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="icon">📋</div>
+                            <div>
+                                <h4>Organisasjonsnummer</h4>
+                                <p>936295886</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="icon">🕐</div>
+                            <div>
+                                <h4>Åpningstider</h4>
+                                <p>Man-Fre: 08:00 - 15:00</p>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: var(--spacing-lg);">
+                            <h4>Følg oss</h4>
+                            <div class="social-links">
+                                <a href="https://www.facebook.com/profile.php?id=61582088922505" target="_blank" rel="noopener">
+                                    <img src="images/social/facebook.png" alt="Facebook">
+                                </a>
+                                <a href="https://www.instagram.com/ZapSiteUB/" target="_blank" rel="noopener">
+                                    <img src="images/social/instagram.png" alt="Instagram">
+                                </a>
+                                <a href="https://www.tiktok.com/@ZapSiteUB" target="_blank" rel="noopener">
+                                    <img src="images/social/tiktok.png" alt="TikTok">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ofte Stilte Spørsmål</h2>
+                <p>Har du spørsmål? Her finner du svarene</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h4>Hvordan kontakter jeg dere?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Du kan kontakte oss ved å fylle ut kontaktskjemaet på denne siden, sende e-post til zapsiteub@gmail.com, eller ringe oss på +47 949 79 453. Vi svarer så raskt som mulig, vanligvis innen 24 timer på hverdager.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in-delay-1">
+                    <div class="faq-question">
+                        <h4>Hva trenger jeg for å bestille?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Du trenger bare å kontakte oss med en kort beskrivelse av hva du ønsker. Vi setter opp et møte for å diskutere dine behov i detalj. Etter det får du et tilbud som du kan godta eller avslå helt uforpliktende.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in-delay-2">
+                    <div class="faq-question">
+                        <h4>Hvor lang tid tar det å få nettsiden?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Leveringstiden varierer avhengig av pakke og prosjektets kompleksitet. Basic-pakken leveres vanligvis innen 1-2 uker, Standard innen 2-3 uker, og Premium innen 3-4 uker. Vi gir deg alltid en estimert tidslinje ved oppstart.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in-delay-3">
+                    <div class="faq-question">
+                        <h4>Kan jeg endre innholdet selv etter levering?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ja, nettsiden leveres med et enkelt administrasjonssystem som lar deg endre tekst, bilder og grunnleggende innhold selv. Vi gir også en gjennomgang av hvordan dette fungerer ved levering.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container text-center cta-content">
+            <h2>Klar for å Komme i Gang?</h2>
+            <p>Kontakt oss i dag for en uforpliktende prat om ditt prosjekt. Vi er klare for å hjelpe deg!</p>
+            <a href="mailto:zapsiteub@gmail.com" class="btn btn-large">Send E-post</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>
+                        <div class="footer-logo-z">Z</div>
+                        ZapSite UB
+                    </h3>
+                    <p>Profesjonelle nettsider til studentvennlige priser. Vi er en ungdomsbedrift som brenner for å hjelpe småbedrifter med digital tilstedeværelse.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61582088922505" target="_blank" rel="noopener" title="Facebook">
+                            <img src="images/social/facebook.png" alt="Facebook">
+                        </a>
+                        <a href="https://www.instagram.com/ZapSiteUB/" target="_blank" rel="noopener" title="Instagram">
+                            <img src="images/social/instagram.png" alt="Instagram">
+                        </a>
+                        <a href="https://www.tiktok.com/@ZapSiteUB" target="_blank" rel="noopener" title="TikTok">
+                            <img src="images/social/tiktok.png" alt="TikTok">
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontakt Oss</h4>
+                    <div class="footer-info-grid">
+                        <div class="footer-info-item">
+                            <span class="icon">📧</span>
+                            <p><a href="mailto:zapsiteub@gmail.com">zapsiteub@gmail.com</a></p>
+                        </div>
+                        <div class="footer-info-item">
+                            <span class="icon">📞</span>
+                            <p><a href="tel:+4794979453">+47 949 79 453</a></p>
+                        </div>
+                        <div class="footer-info-item">
+                            <span class="icon">🏫</span>
+                            <p>Åssiden VGS</p>
+                        </div>
+                        <div class="footer-info-item">
+                            <span class="icon">📋</span>
+                            <p>Org: 936295886</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Veldedighet</h4>
+                    <p>❤️ Vi donerer 5% av overskuddet til Røde Kors</p>
+                    <h4 style="margin-top: 1.5rem;">Skole</h4>
+                    <p>🎓 Ungdomsbedrift ved Åssiden videregående skole</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p>© 2025 ZapSite UB. Alle rettigheter reservert.</p>
+                    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Tilbake til toppen">
+                        ↑
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="global.js"></script>
+</body>
+</html>

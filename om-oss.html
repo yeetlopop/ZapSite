@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Om ZapSite UB - en ungdomsbedrift fra Åssiden videregående skole som skaper profesjonelle nettsider. Donerer 5% av overskuddet til Røde Kors.">
+    <meta name="keywords" content="om oss, ungdomsbedrift, Åssiden videregående skole, Røde Kors, donasjon">
+    <title>Om Oss | ZapSite UB</title>
+    <link rel="stylesheet" href="global.css">
+    <style>
+        .value-card {
+            text-align: center;
+            padding: var(--spacing-lg);
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .value-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .charity-section {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl);
+            text-align: center;
+        }
+        
+        .charity-section h3 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .charity-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.125rem;
+        }
+        
+        .stat-item-large {
+            text-align: center;
+            padding: var(--spacing-lg);
+        }
+        
+        .stat-number-large {
+            font-size: 4rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .stat-label-large {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        .timeline-item {
+            padding: var(--spacing-md);
+            border-left: 3px solid var(--accent-purple);
+            margin-left: var(--spacing-md);
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 1.5rem;
+            width: 15px;
+            height: 15px;
+            background: var(--accent-purple);
+            border-radius: 50%;
+        }
+    </style>
+<script src="global.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-z-square">Z</div>
+                <span class="logo-text">ZapSite UB</span>
+            </a>
+            <button class="mobile-menu-toggle">☰</button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Hjem</a></li>
+                <li><a href="tjenester.html">Tjenester</a></li>
+                <li><a href="priser.html">Priser</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="mentorer.html">Mentorer</a></li>
+                <li><a href="tutorial.html">Tutorial</a></li>
+                <li><a href="om-oss.html">Om oss</a></li>
+                <li><a href="kontakt.html" class="cta-button">Kontakt oss</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="container text-center">
+            <h1 style="color: white; font-size: 3rem; margin-bottom: 1rem;">Om ZapSite UB</h1>
+            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.25rem; max-width: 700px; margin: 0 auto;">Vi er en ungdomsbedrift fra Åssiden videregående skole som brenner for å hjelpe småbedrifter med profesjonelle nettsider.</p>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="section section-white">
+        <div class="container">
+            <div class="section-header">
+                <h2>Vår Historie</h2>
+                <p>En reise fra idé til ungdomsbedrift</p>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="timeline-item fade-in">
+                    <h3 style="color: var(--accent-purple);">Januar 2025 - Starten</h3>
+                    <p style="color: var(--text-medium);">ZapSite UB ble grunnlagt i januar 2025 av fire engasjerte studenter fra Åssiden videregående skole. Med en felles visjon om å tilby profesjonelle nettsider til studentvennlige priser, startet vi vår reise som ungdomsbedrift.</p>
+                </div>
+                <div class="timeline-item fade-in-delay-1">
+                    <h3 style="color: var(--accent-purple);">Vår Misjon</h3>
+                    <p style="color: var(--text-medium);">Vårt mål er å hjelpe småbedrifter og startups med å etablere en sterk digital tilstedeværelse. Vi kombinerer moderne teknologi med kreativt design for å levere løsninger som virker.</p>
+                </div>
+                <div class="timeline-item fade-in-delay-2">
+                    <h3 style="color: var(--accent-purple);">Nå - Seeking First Customers</h3>
+                    <p style="color: var(--text-medium);">Vi er nå i full drift og søker våre første kunder. Med støtte fra erfarne mentorer fra Lysvold AS og Hubro Digital, er vi klare for å levere profesjonelle webløsninger til bedrifter som ønsker å vokse på nettet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="grid grid-3">
+                <div class="stat-item-large fade-in">
+                    <div class="stat-number-large">4</div>
+                    <div class="stat-label-large">Teammedlemmer</div>
+                </div>
+                <div class="stat-item-large fade-in-delay-1">
+                    <div class="stat-number-large">3</div>
+                    <div class="stat-label-large">Erfarne Mentorer</div>
+                </div>
+                <div class="stat-item-large fade-in-delay-2">
+                    <div class="stat-number-large">3</div>
+                    <div class="stat-label-large">Prispakker</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="section section-white">
+        <div class="container">
+            <div class="section-header">
+                <h2>Våre Verdier</h2>
+                <p>Det som driver oss fremover</p>
+            </div>
+            <div class="grid grid-4">
+                <div class="value-card fade-in">
+                    <div class="icon">💡</div>
+                    <h3>Innovasjon</h3>
+                    <p style="color: var(--text-medium);">Vi er alltid på jakt etter nye måter å løse problemer på og leverer moderne løsninger.</p>
+                </div>
+                <div class="value-card fade-in-delay-1">
+                    <div class="icon">🤝</div>
+                    <h3>Samarbeid</h3>
+                    <p style="color: var(--text-medium);">Vi arbeider tett sammen med kunder og mentorer for å oppnå de beste resultatene.</p>
+                </div>
+                <div class="value-card fade-in-delay-2">
+                    <div class="icon">✨</div>
+                    <h3>Kvalitet</h3>
+                    <p style="color: var(--text-medium);">Vi leverer ikke bare produktet, men kvalitet som varer og skaper verdi.</p>
+                </div>
+                <div class="value-card fade-in-delay-3">
+                    <div class="icon">🌱</div>
+                    <h3>Bærekraft</h3>
+                    <p style="color: var(--text-medium);">Vi tenker på fremtiden og støtter samfunnet gjennom vårt veldedighetsarbeid.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Charity Section -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="charity-section fade-in">
+                <div style="font-size: 5rem; margin-bottom: 1rem;">❤️</div>
+                <h3>Vi Støtter Røde Kors</h3>
+                <p style="margin-bottom: var(--spacing-lg);">Som en ungdomsbedrift med hjerte for samfunnet, donerer vi 5% av våre overskudd til Røde Kors.</p>
+                <div style="background: rgba(255, 255, 255, 0.2); padding: var(--spacing-lg); border-radius: var(--radius-md); max-width: 600px; margin: 0 auto;">
+                    <p style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">5% av overskuddet</p>
+                    <p>doneres til Røde Kors for å støtte deres viktige humanitære arbeid i Norge og rundt om i verden.</p>
+                </div>
+                <div style="margin-top: var(--spacing-lg);">
+                    <a href="https://www.rodekors.no" target="_blank" rel="noopener" class="btn btn-large" style="background: white; color: #dc2626;">Besøk Røde Kors</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- School Information -->
+    <section class="section section-white">
+        <div class="container">
+            <div class="grid grid-2" style="align-items: center;">
+                <div class="fade-in">
+                    <h2>Åssiden Videregående Skole</h2>
+                    <p>ZapSite UB er en del av Ungdomsbedrift-programmet ved Åssiden videregående skole. Dette programmet gir unge mennesker muligheten til å lære entreprenørskap og bedriftsdrift i praksis.</p>
+                    <p>Gjennom vårt arbeid lærer vi om markedsføring, kundeservice, prosjektledelse, økonomi og mye mer. Vi får verdifull erfaring som vi vil ha nytte av i våre fremtidige karrierer.</p>
+                    <div style="margin-top: var(--spacing-lg);">
+                        <div class="badge badge-primary" style="margin-right: var(--spacing-sm);">Ungdomsbedrift</div>
+                        <div class="badge badge-primary" style="margin-right: var(--spacing-sm);">Entrepreneørskap</div>
+                        <div class="badge badge-primary">Læring i Praksis</div>
+                    </div>
+                </div>
+                <div class="text-center fade-in-delay-1">
+                    <div style="background: var(--bg-light); padding: 2rem; border-radius: var(--radius-lg);">
+                        <div style="font-size: 5rem; margin-bottom: 1rem;">🏫</div>
+                        <h3 style="color: var(--accent-purple); margin-bottom: 1rem;">Ungdomsbedrift</h3>
+                        <p style="color: var(--text-medium);">Vi lærer entreprenørskap i praksis gjennom å drive en ekte bedrift i skoletiden.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container text-center cta-content">
+            <h2>Støtt Vår Ungdomsbedrift</h2>
+            <p>Ved å velge ZapSite UB får du ikke bare en profesjonell nettside, du støtter også fremtidens entreprenører og Røde Kors.</p>
+            <a href="kontakt.html" class="btn btn-large">Kontakt oss</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>
+                        <div class="footer-logo-z">Z</div>
+                        ZapSite UB
+                    </h3>
+                    <p>Profesjonelle nettsider til studentvennlige priser. Vi er en ungdomsbedrift som brenner for å hjelpe småbedrifter med digital tilstedeværelse.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61582088922505" target="_blank" rel="noopener" title="Facebook">
+                            <img src="images/social/facebook.png" alt="Facebook">
+                        </a>
+                        <a href="https://www.instagram.com/ZapSiteUB/" target="_blank" rel="noopener" title="Instagram">
+                            <img src="images/social/instagram.png" alt="Instagram">
+                        </a>
+                        <a href="https://www.tiktok.com/@ZapSiteUB" target="_blank" rel="noopener" title="TikTok">
+                            <img src="images/social/tiktok.png" alt="TikTok">
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontakt Oss</h4>
+                    <div class="footer-info-grid">
+                        <div class="footer-info-item">
+                            <span class="icon">📧</span>
+                            <p><a href="mailto:zapsiteub@gmail.com">zapsiteub@gmail.com</a></p>
+                        </div>
+                        <div class="footer-info-item">
+                            <span class="icon">📞</span>
+                            <p><a href="tel:+4794979453">+47 949 79 453</a></p>
+                        </div>
+                        <div class="footer-info-item">
+                            <span class="icon">🏫</span>
+                            <p>Åssiden VGS</p>
+                        </div>
+                        <div class="footer-info-item">
+                            <span class="icon">📋</span>
+                            <p>Org: 936295886</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Veldedighet</h4>
+                    <p>❤️ Vi donerer 5% av overskuddet til Røde Kors</p>
+                    <h4 style="margin-top: 1.5rem;">Skole</h4>
+                    <p>🎓 Ungdomsbedrift ved Åssiden videregående skole</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p>© 2025 ZapSite UB. Alle rettigheter reservert.</p>
+                    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Tilbake til toppen">
+                        ↑
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="global.js"></script>
+</body>
+</html>

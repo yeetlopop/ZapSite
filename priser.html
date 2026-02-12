@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Se våre konkurransedyktige priser for nettsider. Basic, Standard og Premium pakker tilpasset ulike behov og budsjett.">
+    <meta name="keywords" content="priser, nettsider, webdesign, studentvennlige priser">
+    <title>Priser | ZapSite UB</title>
+    <link rel="stylesheet" href="global.css">
+    <style>
+        .pricing-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1rem;
+            color: var(--text-medium);
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            color: var(--accent-success);
+            font-weight: 700;
+            font-size: 1.25rem;
+            width: 24px;
+            height: 24px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+    </style>
+<script src="global.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-z-square">Z</div>
+                <span class="logo-text">ZapSite UB</span>
+            </a>
+            <button class="mobile-menu-toggle">☰</button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Hjem</a></li>
+                <li><a href="tjenester.html">Tjenester</a></li>
+                <li><a href="priser.html">Priser</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="mentorer.html">Mentorer</a></li>
+                <li><a href="tutorial.html">Tutorial</a></li>
+                <li><a href="om-oss.html">Om oss</a></li>
+                <li><a href="kontakt.html" class="cta-button">Kontakt oss</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="container text-center">
+            <h1 style="color: white; font-size: 3rem; margin-bottom: 1rem;">Våre Priser</h1>
+            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.25rem; max-width: 700px; margin: 0 auto;">Enkle og transparente priser uten skjulte kostnader. Velg pakken som passer best for dine behov.</p>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section section-white">
+        <div class="container">
+            <div class="grid grid-3">
+                <!-- Basic Package -->
+                <div class="card pricing-card fade-in">
+                    <div class="card-header text-center">
+                        <h3 class="card-title">Basic</h3>
+                        <p style="color: var(--text-light);">For enkle nettsider</p>
+                        <div style="font-size: 3rem; font-weight: 800; color: var(--accent-blue); margin: 1rem 0;">2 499 kr</div>
+                    </div>
+                    <ul class="feature-list" style="margin-bottom: var(--spacing-md);">
+                        <li>1-3 sider</li>
+                        <li>Responsivt design</li>
+                        <li>Sosiale medier-knapper</li>
+                        <li>Grunnleggende funksjoner</li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="kontakt.html" class="btn btn-secondary" style="width: 100%;">Velg pakke</a>
+                    </div>
+                </div>
+                
+                <!-- Standard Package - Featured -->
+                <div class="card pricing-card fade-in-delay-1" style="position: relative; border: 3px solid var(--accent-purple); transform: scale(1.05);">
+                    <div class="badge-popular">billig!</div>
+                    <div class="card-header text-center">
+                        <h3 class="card-title">Standard</h3>
+                        <p style="color: var(--text-light);">For bedrifter</p>
+                        <div style="font-size: 3rem; font-weight: 800; color: var(--accent-purple); margin: 1rem 0;">4 799 kr</div>
+                    </div>
+                    <ul class="feature-list" style="margin-bottom: var(--spacing-md);">
+                        <li>5 sider</li>
+                        <li>avansert design</li>
+                        <li>galleri/portfolio</li>
+                        <li>alt fra Basic</li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="kontakt.html" class="btn btn-primary" style="width: 100%;">Velg pakke</a>
+                    </div>
+                </div>
+                
+                <!-- Premium Package -->
+                <div class="card pricing-card fade-in-delay-2">
+                    <div class="card-header text-center">
+                        <h3 class="card-title">Premium</h3>
+                        <p style="color: var(--text-light);">For komplette løsninger</p>
+                        <div style="font-size: 3rem; font-weight: 800; color: var(--accent-blue); margin: 1rem 0;">6 999 kr</div>
+                    </div>
+                    <ul class="feature-list" style="margin-bottom: var(--spacing-md);">
+                        <li>6-8 sider</li>
+                        <li>Responsivt design</li>
+                        <li>Avanserte funksjoner</li>
+                        <li>Tilpassede animasjoner</li>
+                    </ul>
+                    <div class="card-footer">
+                        <a href="kontakt.html" class="btn btn-secondary" style="width: 100%;">Velg pakke</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included Section -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hva Inngår i Alle Pakker</h2>
+                <p>Felles funksjoner for alle våre prispakker</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card fade-in">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">📱</div>
+                    <h3 class="card-title">Responsivt Design</h3>
+                    <p class="card-content">Nettsiden fungerer perfekt på alle enheter - mobil, nettbrett og desktop.</p>
+                </div>
+                <div class="card fade-in-delay-1">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🔒</div>
+                    <h3 class="card-title">Sikkerhet</h3>
+                    <p class="card-content">SSL-sertifisering og sikkerhetssjekk for trygg drift av nettsiden.</p>
+                </div>
+                <div class="card fade-in-delay-2">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">💬</div>
+                    <h3 class="card-title">Support</h3>
+                    <p class="card-content">Hjelp og support gjennom hele prosessen og etter lansering.</p>
+                </div>
+                <div class="card fade-in">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🎨</div>
+                    <h3 class="card-title">Profesjonelt Design</h3>
+                    <p class="card-content">Moderne og brukervennlig design som representerer bedriften din.</p>
+                </div>
+                <div class="card fade-in-delay-1">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">📊</div>
+                    <h3 class="card-title">Google Analytics</h3>
+                    <p class="card-content">Settes opp for å spore trafikk og brukeratferd på nettsiden.</p>
+                </div>
+                <div class="card fade-in-delay-2">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🚀</div>
+                    <h3 class="card-title">Rask Levering</h3>
+                    <p class="card-content">Effektiv prosess med klare tidslinjer for levering.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section section-white">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ofte Stilte Spørsmål</h2>
+                <p>Har du spørsmål? Her finner du svarene</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h4>Hva er inkludert i prisene?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Våre priser inkluderer alt som er nevnt under hver pakke. Dette dekker design, utvikling, testing og lansering av nettsiden. Ingen skjulte kostnader.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in-delay-1">
+                    <div class="faq-question">
+                        <h4>Hvor lang tid tar det å lage nettsiden?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Leveringstiden varierer avhengig av pakke og prosjektets kompleksitet. Basic-pakken leveres vanligvis innen 1-2 uker, Standard innen 2-3 uker, og Premium innen 3-4 uker. Vi gir deg alltid en estimert tidslinje ved oppstart.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in-delay-2">
+                    <div class="faq-question">
+                        <h4>Kan jeg endre innholdet selv etter levering?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ja, nettsiden leveres med et enkelt administrasjonssystem som lar deg endre tekst, bilder og grunnleggende innhold selv. Vi gir også en gjennomgang av hvordan dette fungerer ved levering.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in-delay-3">
+                    <div class="faq-question">
+                        <h4>Hva med hosting og domene?</h4>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Hosting og domene er ikke inkludert i prisene, men vi kan hjelpe deg med å sette dette opp. Premium-pakken inkluderer ett års gratis hosting. Vi gir også gjerne råd om hvilke løsninger som passer best for deg.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container text-center cta-content">
+            <h2>Finn Riktig Pakke</h2>
+            <p>Usikker på hvilken pakke som passer best? Kontakt oss for en uforpliktende prat.</p>
+            <a href="kontakt.html" class="btn btn-large">Kontakt oss</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>
+                        <div class="footer-logo-z">Z</div>
+                        ZapSite UB
+                    </h3>
+                    <p>Profesjonelle nettsider til studentvennlige priser. Vi er en ungdomsbedrift som brenner for å hjelpe småbedrifter med digital tilstedeværelse.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61582088922505" target="_blank" rel="noopener" title="Facebook">
+                            <img src="images/social/facebook.png" alt="Facebook">
+                        </a>
+                        <a href="https://www.instagram.com/ZapSiteUB/" target="_blank" rel="noopener" title="Instagram">
+                            <img src="images/social/instagram.png" alt="Instagram">
+                        </a>
+                        <a href="https://www.tiktok.com/@ZapSiteUB" target="_blank" rel="noopener" title="TikTok">
+                            <img src="images/social/tiktok.png" alt="TikTok">
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontakt Oss</h4>
+                    <div class="footer-info-grid">
+                        <div class="footer-info-item">
+                            <span class="icon">📧</span>
+                            <p><a href="mailto:zapsiteub@gmail.com">zapsiteub@gmail.com</a></p>
+                        </div>
+                        <div class="footer-info-item">
+                            <span class="icon">📞</span>
+                            <p><a href="tel:+4794979453">+47 949 79 453</a></p>
+                        </div>
+                        <div class="footer-info-item">
+                            <span class="icon">🏫</span>
+                            <p>Åssiden VGS</p>
+                        </div>
+                        <div class="footer-info-item">
+                            <span class="icon">📋</span>
+                            <p>Org: 936295886</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Veldedighet</h4>
+                    <p>❤️ Vi donerer 5% av overskuddet til Røde Kors</p>
+                    <h4 style="margin-top: 1.5rem;">Skole</h4>
+                    <p>🎓 Ungdomsbedrift ved Åssiden videregående skole</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p>© 2025 ZapSite UB. Alle rettigheter reservert.</p>
+                    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Tilbake til toppen">
+                        ↑
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="global.js"></script>
+</body>
+</html>

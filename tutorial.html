@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lær webutvikling og hosting med våre gratis tutorials. HTML, CSS, JavaScript kurs og guide til hosting og domener.">
+    <meta name="keywords" content="tutorial, webutvikling, HTML, CSS, JavaScript, hosting, domene, kurs">
+    <title>Tutorial | ZapSite UB</title>
+    <link rel="stylesheet" href="global.css">
+    <style>
+        .courses-container,
+        .lessons-container {
+            display: none;
+        }
+        
+        .courses-container.active,
+        .lessons-container.active {
+            display: block;
+        }
+        
+        .course-card {
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            border: 2px solid transparent;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent-purple);
+        }
+        
+        .course-card .course-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        
+        .lesson {
+            display: none;
+        }
+        
+        .lesson.active {
+            display: block;
+        }
+        
+        .lesson-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-lg);
+            border-top: 2px solid var(--bg-light);
+        }
+        
+        .lesson-nav button {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        
+        .lesson-nav button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .lesson-nav button:not(:disabled):hover {
+            transform: translateY(-2px);
+        }
+        
+        .lesson-nav button.btn-prev {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            border: none;
+        }
+        
+        .lesson-nav button.btn-prev:not(:disabled):hover {
+            background: var(--accent-blue);
+            color: white;
+        }
+        
+        .lesson-nav button.btn-next {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+        }
+        
+        .lesson-nav button.btn-next:hover {
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: var(--bg-light);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--gradient-primary);
+            width: 0%;
+            transition: width var(--transition-normal);
+        }
+        
+        .progress-text {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+        
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: var(--spacing-md) 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .code-block .comment {
+            color: #6b7280;
+        }
+        
+        .code-block .keyword {
+            color: #c084fc;
+        }
+        
+        .code-block .string {
+            color: #34d399;
+        }
+        
+        .code-block .tag {
+            color: #60a5fa;
+        }
+        
+        .code-block .attribute {
+            color: #fbbf24;
+        }
+        
+        .quiz-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-xl);
+            margin-top: var(--spacing-lg);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .quiz-container h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .quiz-option {
+            background: white;
+            padding: 1rem 1.5rem;
+            margin-bottom: var(--spacing-md);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            border: 2px solid transparent;
+            font-weight: 500;
+            font-size: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .quiz-option:hover {
+            border-color: var(--accent-blue);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        
+        .quiz-feedback {
+            margin-top: var(--spacing-md);
+            font-weight: 600;
+            display: none;
+        }
+        
+        .back-to-courses {
+            display: inline-block;
+            margin-bottom: var(--spacing-lg);
+            padding: 0.5rem 1rem;
+            background: var(--bg-light);
+            border-radius: var(--radius-md);
+            color: var(--text-dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        
+        .back-to-courses:hover {
+            background: var(--accent-blue);
+            color: white;
+        }
+        
+        .lesson-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .lesson-content h2 {
+            color: var(--accent-purple);
+            margin-bottom: var(--spacing-md);
+            font-size: 2rem;
+            border-bottom: 3px solid var(--accent-purple);
+            padding-bottom: 0.5rem;
+        }
+        
+        .lesson-content p {
+            color: var(--text-medium);
+            line-height: 1.8;
+        }
+        
+        .lesson-content ul,
+        .lesson-content ol {
+            margin: var(--spacing-md) 0;
+            padding-left: 1.5rem;
+        }
+        
+        .lesson-content li {
+            margin-bottom: 0.5rem;
+            color: var(--text-medium);
+        }
+    </style>
+<script src="global.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-z-square">Z</div>
+                <span class="logo-text">ZapSite UB</span>
+            </a>
+            <button class="mobile-menu-toggle">☰</button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Hjem</a></li>
+                <li><a href="tjenester.html">Tjenester</a></li>
+                <li><a href="priser.html">Priser</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="mentorer.html">Mentorer</a></li>
+                <li><a href="tutorial.html">Tutorial</a></li>
+                <li><a href="om-oss.html">Om oss</a></li>
+                <li><a href="kontakt.html" class="cta-button">Kontakt oss</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text text-center">
+                    <h1 style="color: white; font-size: 3rem; margin-bottom: 1rem;">Gratis Tutorialer</h1>
+                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.25rem; max-width: 700px; margin: 0 auto;">Lær webutvikling og hvordan du kommer i gang med hosting. Gratis kurs for alle nivåer.</p>
+                </div>
+                <div class="hero-image text-center">
+                    <img src="images/hero/robotfix.gif" alt="ZapSite UB Robot" style="max-width: 300px; border-radius: 50%; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Selection -->
+    <section class="section section-white courses-container active" id="coursesContainer">
+        <div class="container">
+            <div class="section-header">
+                <h2>Velg et Kurs</h2>
+                <p>Vi tilbyr gratis kurs for å hjelpe deg i gang</p>
+            </div>
+            <div class="grid grid-2">
+                <!-- Course 1 -->
+                <div class="card course-card fade-in" data-course="1">
+                    <div class="course-number">01</div>
+                    <h3>HTML, CSS & JavaScript</h3>
+                    <p style="color: var(--text-medium);">Lær grunnleggende webutvikling fra bunnen av. Dette kurset dekker HTML, CSS og JavaScript med 14 leksjoner og interaktive quizer.</p>
+                    <ul style="margin-top: 1rem; padding-left: 1.25rem; color: var(--text-medium);">
+                        <li>14 leksjoner</li>
+                        <li>4 interaktive quizer</li>
+                        <li>Gradvis progresjon</li>
+                        <li>Gratis for alle</li>
+                    </ul>
+                    <div style="margin-top: var(--spacing-lg);">
+                        <span class="badge badge-primary">Start kurs</span>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="card course-card fade-in-delay-1" data-course="2">
+                    <div class="course-number">02</div>
+                    <h3>Hvordan Hoste en Nettside og Få et Domene</h3>
+                    <p style="color: var(--text-medium);">Lær hvordan du publiserer nettsiden din og registrerer et domene. En praktisk guide på norsk.</p>
+                    <ul style="margin-top: 1rem; padding-left: 1.25rem; color: var(--text-medium);">
+                        <li>5 leksjoner</li>
+                        <li>Steg-for-steg guide</li>
+                        <li>På norsk</li>
+                        <li>Gratis for alle</li>
+                    </ul>
+                    <div style="margin-top: var(--spacing-lg);">
+                        <span class="badge badge-primary">Start kurs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lessons Container -->
+    <section class="section section-white lessons-container" id="lessonsContainer">
+        <div class="container">
+            <div class="back-to-courses" onclick="backToCourses()">
+                ← Tilbake til kurs
+            </div>
+            
+            <!-- Progress Bar -->
+            <div style="margin-bottom: var(--spacing-xl);">
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" id="progressBar"></div>
+                </div>
+                <div class="progress-text" id="progressText">1 av 14</div>
+            </div>
+
+            <!-- Lessons Content -->
+            <div class="lesson-content" id="lessonContent">
+                <!-- Lessons will be loaded dynamically -->
+            </div>
+
+            <!-- Lesson Navigation -->
+            <div class="lesson-nav">
+                <button class="btn-prev" onclick="navigateLesson('prev')" id="prevBtn" disabled>Forrige</button>
+                <button class="btn-next" onclick="navigateLesson('next')" id="nextBtn">Neste</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container text-center cta-content">
+            <h2>Trenger du Profesjonell Hjelp?</h2>
+            <p>Hvis du vil ha en profesjonell nettside uten å gjøre det selv, kan ZapSite UB hjelpe deg!</p>
+            <a href="kontakt.html" class="btn btn-large">Kontakt oss</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>
+                        <div class="footer-logo-z">Z</div>
+                        ZapSite UB
+                    </h3>
+                    <p>Profesjonelle nettsider til studentvennlige priser. Vi er en ungdomsbedrift som brenner for å hjelpe småbedrifter med digital tilstedeværelse.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61582088922505" target="_blank" rel="noopener" title="Facebook">
+                            <img src="images/social/facebook.png" alt="Facebook">
+                        </a>
+                        <a href="https://www.instagram.com/ZapSiteUB/" target="_blank" rel="noopener" title="Instagram">
+                            <img src="images/social/instagram.png" alt="Instagram">
+                        </a>
+                        <a href="https://www.tiktok.com/@ZapSiteUB" target="_blank" rel="noopener" title="TikTok">
+                            <img src="images/social/tiktok.png" alt="TikTok">
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontakt Oss</h4>
+                    <div class="footer-info-grid">
+                        <div class="footer-info-item">
+                            <span class="icon">📧</span>
+                            <p><a href="mailto:zapsiteub@gmail.com">zapsiteub@gmail.com</a></p>
+                        </div>
+                        <div class="footer-info-item">
+                            <span class="icon">📞</span>
+                            <p><a href="tel:+4794979453">+47 949 79 453</a></p>
+                        </div>
+                        <div class="footer-info-item">
+                            <span class="icon">🏫</span>
+                            <p>Åssiden VGS</p>
+                        </div>
+                        <div class="footer-info-item">
+                            <span class="icon">📋</span>
+                            <p>Org: 936295886</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Veldedighet</h4>
+                    <p>❤️ Vi donerer 5% av overskuddet til Røde Kors</p>
+                    <h4 style="margin-top: 1.5rem;">Skole</h4>
+                    <p>🎓 Ungdomsbedrift ved Åssiden videregående skole</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p>© 2025 ZapSite UB. Alle rettigheter reservert.</p>
+                    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Tilbake til toppen">
+                        ↑
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="global.js"></script>
+    <script>
+        // Course Data
+        const courses = {
+            1: {
+                title: "HTML, CSS & JavaScript",
+                lessons: [
+                    {
+                        title: "Introduksjon til Webutvikling",
+                        content: `
+                            <h2>Introduksjon til Webutvikling</h2>
+                            <p>Velkommen til kurset! I denne leksjonen lærer du hva webutvikling er og hva du kan forvente av dette kurset.</p>
+                            <h3>Hva er Webutvikling?</h3>
+                            <p>Webutvikling er prosessen med å lage og vedlikeholde nettsider. Det involverer flere teknologier som arbeider sammen for å skape de nettsidene du bruker hver dag.</p>
+                            <h3>De Tre Hovedteknologiene</h3>
+                            <ul>
+                                <li><strong>HTML (HyperText Markup Language)</strong> - Strukturerer innholdet på nettsiden</li>
+                                <li><strong>CSS (Cascading Style Sheets)</strong> - Styler og utformer nettsiden</li>
+                                <li><strong>JavaScript</strong> - Gjør nettsiden interaktiv og dynamisk</li>
+                            </ul>
+                            <p>I dette kurset vil du lære alle tre teknologiene fra bunnen av!</p>
+                        `
+                    },
+                    {
+                        title: "HTML Basics",
+                        content: `
+                            <h2>HTML Basics</h2>
+                            <p>HTML er ryggraden i alle nettsider. La oss lære det grunnleggende!</p>
+                            <h3>Hva er HTML?</h3>
+                            <p>HTML står for HyperText Markup Language. Det er et markup-språk som brukes til å strukturere innhold på nettsider.</p>
+                            <h3>HTML-struktur</h3>
+                            <p>Her er et eksempel på en enkel HTML-side:</p>
+                            <div class="code-block">
+&lt;!DOCTYPE html&gt;
+<span class="tag">&lt;html&gt;</span>
+  <span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Min første nettside<span class="tag">&lt;/title&gt;</span>
+  <span class="tag">&lt;/head&gt;</span>
+  <span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;h1&gt;</span>Hei, verden!<span class="tag">&lt;/h1&gt;</span>
+    <span class="tag">&lt;p&gt;</span>Dette er min første nettside.<span class="tag">&lt;/p&gt;</span>
+  <span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+                            </div>
+                            <h3>Viktige HTML-elementer</h3>
+                            <ul>
+                                <li><code>&lt;h1&gt;</code> til <code>&lt;h6&gt;</code> - Overskrifter</li>
+                                <li><code>&lt;p&gt;</code> - Avsnitt</li>
+                                <li><code>&lt;a&gt;</code> - Lenker</li>
+                                <li><code>&lt;img&gt;</code> - Bilder</li>
+                                <li><code>&lt;div&gt;</code> - Beholder for innhold</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: "Quiz 1",
+                        quiz: true,
+                        question: "Hva betyr HTML?",
+                        options: [
+                            { text: "HyperText Markup Language", correct: true },
+                            { text: "High Tech Modern Language", correct: false },
+                            { text: "Home Tool Markup Language", correct: false },
+                            { text: "Hyper Tool Modern Language", correct: false }
+                        ]
+                    },
+                    {
+                        title: "HTML Forms and Tables",
+                        content: `
+                            <h2>HTML Forms and Tables</h2>
+                            <p>Forms og tables er viktige elementer for å samle inn data og vise strukturert informasjon.</p>
+                            <h3>HTML Forms</h3>
+                            <p>Forms lar brukere sende data til serveren:</p>
+                            <div class="code-block">
+<span class="tag">&lt;form&gt;</span>
+  <span class="tag">&lt;label&gt;</span>Navn:<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="string">"text"</span> <span class="attribute">name</span>=<span class="string">"navn"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;label&gt;</span>E-post:<span class="tag">&lt;/label&gt;</span>
+  <span class="tag">&lt;input</span> <span class="attribute">type</span>=<span class="string">"email"</span> <span class="attribute">name</span>=<span class="string">"email"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;button</span> <span class="attribute">type</span>=<span class="string">"submit"</span><span class="tag">&gt;</span>Send<span class="tag">&lt;/button&gt;</span>
+<span class="tag">&lt;/form&gt;</span>
+                            </div>
+                            <h3>HTML Tables</h3>
+                            <p>Tables brukes til å vise data i rader og kolonner:</p>
+                            <div class="code-block">
+<span class="tag">&lt;table&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>
+    <span class="tag">&lt;th&gt;</span>Navn<span class="tag">&lt;/th&gt;</span>
+    <span class="tag">&lt;th&gt;</span>Alder<span class="tag">&lt;/th&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+  <span class="tag">&lt;tr&gt;</span>
+    <span class="tag">&lt;td&gt;</span>Ola<span class="tag">&lt;/td&gt;</span>
+    <span class="tag">&lt;td&gt;</span>25<span class="tag">&lt;/td&gt;</span>
+  <span class="tag">&lt;/tr&gt;</span>
+<span class="tag">&lt;/table&gt;</span>
+                            </div>
+                        `
+                    },
+                    {
+                        title: "CSS Basics",
+                        content: `
+                            <h2>CSS Basics</h2>
+                            <p>CSS (Cascading Style Sheets) brukes til å style nettsiden din. La oss lære det grunnleggende!</p>
+                            <h3>Hvordan Legge til CSS</h3>
+                            <p>Du kan legge til CSS på tre måter:</p>
+                            <ol>
+                                <li>Inline CSS - direkte i elementet</li>
+                                <li>Internal CSS - i <code>&lt;style&gt;</code> taggen</li>
+                                <li>External CSS - i en separat .css fil (anbefalt)</li>
+                            </ol>
+                            <h3>Eksempel på CSS</h3>
+                            <div class="code-block">
+<span class="comment">/* External CSS - style.css */</span>
+<span class="keyword">body</span> {
+  <span class="attribute">background-color</span>: <span class="string">lightblue</span>;
+  <span class="attribute">font-family</span>: <span class="string">Arial</span>;
+}
+
+<span class="keyword">h1</span> {
+  <span class="attribute">color</span>: <span class="string">darkblue</span>;
+  <span class="attribute">text-align</span>: <span class="string">center</span>;
+}
+                            </div>
+                        `
+                    },
+                    {
+                        title: "CSS Layout (Flexbox & Grid)",
+                        content: `
+                            <h2>CSS Layout</h2>
+                            <p>Flexbox og Grid er moderne måter å layoute nettsider på.</p>
+                            <h3>Flexbox</h3>
+                            <p>Flexbox er perfekt for one-dimensjonale layouts:</p>
+                            <div class="code-block">
+<span class="keyword">.container</span> {
+  <span class="attribute">display</span>: <span class="string">flex</span>;
+  <span class="attribute">justify-content</span>: <span class="string">center</span>;
+  <span class="attribute">align-items</span>: <span class="string">center</span>;
+}
+                            </div>
+                            <h3>CSS Grid</h3>
+                            <p>Grid er perfekt for two-dimensjonale layouts:</p>
+                            <div class="code-block">
+<span class="keyword">.grid-container</span> {
+  <span class="attribute">display</span>: <span class="string">grid</span>;
+  <span class="attribute">grid-template-columns</span>: <span class="string">1fr 1fr</span>;
+  <span class="attribute">gap</span>: <span class="string">20px</span>;
+}
+                            </div>
+                        `
+                    },
+                    {
+                        title: "Quiz 2",
+                        quiz: true,
+                        question: "Hvilken CSS-egenskap bruker du for å sentrere innhold horisontalt med Flexbox?",
+                        options: [
+                            { text: "text-align: center", correct: false },
+                            { text: "justify-content: center", correct: true },
+                            { text: "align-items: center", correct: false },
+                            { text: "flex-direction: center", correct: false }
+                        ]
+                    },
+                    {
+                        title: "CSS Animations",
+                        content: `
+                            <h2>CSS Animations</h2>
+                            <p>Du kan lage flotte animasjoner med CSS!</p>
+                            <h3>Keyframe Animations</h3>
+                            <div class="code-block">
+<span class="keyword">@keyframes</span> fadeIn {
+  <span class="keyword">from</span> {
+    <span class="attribute">opacity</span>: <span class="string">0</span>;
+  }
+  <span class="keyword">to</span> {
+    <span class="attribute">opacity</span>: <span class="string">1</span>;
+  }
+}
+
+<span class="keyword">.element</span> {
+  <span class="attribute">animation</span>: <span class="string">fadeIn 1s ease-in</span>;
+}
+                            </div>
+                            <h3>Transitions</h3>
+                            <div class="code-block">
+<span class="keyword">.button</span> {
+  <span class="attribute">transition</span>: <span class="string">all 0.3s ease</span>;
+}
+
+<span class="keyword">.button:hover</span> {
+  <span class="attribute">transform</span>: <span class="string">scale(1.1)</span>;
+}
+                            </div>
+                        `
+                    },
+                    {
+                        title: "JavaScript Basics",
+                        content: `
+                            <h2>JavaScript Basics</h2>
+                            <p>JavaScript gjør nettsiden din interaktiv og dynamisk!</p>
+                            <h3>Variabler</h3>
+                            <div class="code-block">
+<span class="keyword">let</span> navn = <span class="string">"Ola"</span>;
+<span class="keyword">const</span> alder = <span class="string">25</span>;
+<span class="keyword">var</span> gammelMåte = <span class="string">"Unngå denne"</span>;
+                            </div>
+                            <h3>Datatyper</h3>
+                            <ul>
+                                <li><strong>String</strong> - Tekst: <code>"Hei"</code></li>
+                                <li><strong>Number</strong> - Tall: <code>42</code></li>
+                                <li><strong>Boolean</strong> - Sann/usann: <code>true/false</code></li>
+                                <li><strong>Array</strong> - Liste: <code>[1, 2, 3]</code></li>
+                                <li><strong>Object</strong> - Objekt: <code>{navn: "Ola"}</code></li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: "JavaScript Functions",
+                        content: `
+                            <h2>JavaScript Functions</h2>
+                            <p>Funksjoner er gjenbrukbare blokker med kode.</p>
+                            <h3>Function Declaration</h3>
+                            <div class="code-block">
+<span class="keyword">function</span> hilsen(navn) {
+  <span class="keyword">return</span> <span class="string">"Hei, "</span> + navn + <span class="string">"!"</span>;
+}
+
+<span class="comment">// Bruk funksjonen</span>
+<span class="keyword">console.log</span>(hilsen(<span class="string">"Ola"</span>)); <span class="comment">// "Hei, Ola!"</span>
+                            </div>
+                            <h3>Arrow Functions (moderne måte)</h3>
+                            <div class="code-block">
+<span class="keyword">const</span> hilsen = (navn) => {
+  <span class="keyword">return</span> <span class="string">"Hei, "</span> + navn + <span class="string">"!"</span>;
+};
+                            </div>
+                        `
+                    },
+                    {
+                        title: "Quiz 3",
+                        quiz: true,
+                        question: "Hvilken nøkkelord brukes for å deklarere en variabel som ikke kan endres?",
+                        options: [
+                            { text: "let", correct: false },
+                            { text: "var", correct: false },
+                            { text: "const", correct: true },
+                            { text: "variable", correct: false }
+                        ]
+                    },
+                    {
+                        title: "JavaScript DOM Manipulation",
+                        content: `
+                            <h2>JavaScript DOM Manipulation</h2>
+                            <p>DOM (Document Object Model) lar deg endre innholdet på nettsiden med JavaScript.</p>
+                            <h3>Hente Elementer</h3>
+                            <div class="code-block">
+<span class="keyword">const</span> element = <span class="keyword">document</span>.getElementById(<span class="string">"minId"</span>);
+<span class="keyword">const</span> elements = <span class="keyword">document</span>.querySelectorAll(<span class="string">".minKlasse"</span>);
+                            </div>
+                            <h3>Endre Innhold</h3>
+                            <div class="code-block">
+element.textContent = <span class="string">"Ny tekst"</span>;
+element.innerHTML = <span class="string">"&lt;strong&gt;Ny HTML&lt;/strong&gt;"</span>;
+                            </div>
+                            <h3>Endre CSS</h3>
+                            <div class="code-block">
+element.style.color = <span class="string">"red"</span>;
+element.classList.add(<span class="string">"aktiv"</span>);
+                            </div>
+                        `
+                    },
+                    {
+                        title: "Building a Complete Project",
+                        content: `
+                            <h2>Building a Complete Project</h2>
+                            <p>Nå skal vi sette alt sammen og lage et komplett prosjekt!</p>
+                            <h3>Prosjekt: Enkel Hjemmeside</h3>
+                            <p>Vi skal lage en enkel hjemmeside med:</p>
+                            <ul>
+                                <li>Header med navigasjon</li>
+                                <li>Hero-seksjon</li>
+                                <li>Om oss-seksjon</li>
+                                <li>Kontakt-seksjon</li>
+                                <li>Footer</li>
+                            </ul>
+                            <p>Strukturer HTML-en først, så style med CSS, og til slutt legg til interaktivitet med JavaScript.</p>
+                            <h3>Beste Praksis</h3>
+                            <ul>
+                                <li>Bruk semantisk HTML</li>
+                                <li>Skriv ren og lesbar kode</li>
+                                <li>Kommenter koden din</li>
+                                <li>Test på forskjellige enheter</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: "Best Practices and Next Steps",
+                        content: `
+                            <h2>Best Practices and Next Steps</h2>
+                            <p>Gratulerer! Du har fullført kurset. Her er noen tips for videre læring.</p>
+                            <h3>Best Practices</h3>
+                            <ul>
+                                <li>Bruk alltid semantisk HTML</li>
+                                <li>Skriv mobil-først kode</li>
+                                <li>Optimaliser bilder og kode</li>
+                                <li>Bruk moderne JavaScript (ES6+)</li>
+                                <li>Lær om aksesibilitet (a11y)</li>
+                            </ul>
+                            <h3>Neste Skritt</h3>
+                            <ul>
+                                <li>Lær om React eller Vue.js</li>
+                                <li>Utforsk backend-utvikling (Node.js, Python)</li>
+                                <li>Lær om databases</li>
+                                <li>Bli kjent med Git og GitHub</li>
+                                <li>Bygg flere prosjekter!</li>
+                            </ul>
+                            <p>Husk: Den beste måten å lære på er å bygge ting!</p>
+                        `
+                    }
+                ]
+            },
+            2: {
+                title: "Hvordan Hoste en Nettside og Få et Domene",
+                lessons: [
+                    {
+                        title: "Introduksjon",
+                        content: `
+                            <h2>Introduksjon til Hosting og Domener</h2>
+                            <p>Velkommen til kurset! I dette kurset vil du lære hvordan du publiserer nettsiden din og registrerer et domene.</p>
+                            <h3>Hva lærer du?</h3>
+                            <ul>
+                                <li>Hva webhosting er</li>
+                                <li>Hva et domene er</li>
+                                <li>Hvilke typer hosting som finnes</li>
+                                <li>Hvordan komme i gang med hosting og domene</li>
+                            </ul>
+                            <p>Når du har laget en nettside, må du ha et sted å hoste den og et domene slik at folk kan finne den!</p>
+                        `
+                    },
+                    {
+                        title: "Hva er Webhosting?",
+                        content: `
+                            <h2>Hva er Webhosting?</h2>
+                            <p>Webhosting er en tjeneste som lar deg publisere nettsiden din på internett.</p>
+                            <h3>Hvordan fungerer det?</h3>
+                            <p>Når du kjøper webhosting, leier du plass på en server der filene til nettsiden din lagres. Når noen besøker nettsiden din, hentes disse filene fra serveren og vises i nettleseren deres.</p>
+                            <h3>Hva trenger du?</h3>
+                            <ul>
+                                <li><strong>Webhosting</strong> - Plass på en server</li>
+                                <li><strong>Domene</strong> - Adressen til nettsiden din</li>
+                                <li><strong>Nettsidefiler</strong> - HTML, CSS, JavaScript, bilder, osv.</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: "Hva er et Domene?",
+                        content: `
+                            <h2>Hva er et Domene?</h2>
+                            <p>Et domene er adressen til nettsiden din på internett. Det er det folk skriver i nettleseren for å finne deg.</p>
+                            <h3>Domenestruktur</h3>
+                            <p>Et domene består av flere deler:</p>
+                            <ul>
+                                <li><strong>Subdomene</strong> (valgfritt) - f.eks. <code>www</code></li>
+                                <li><strong>Andrenivå-domene</strong> - f.eks. <code>google</code></li>
+                                <li><strong>Toppnivå-domene (TLD)</strong> - f.eks. <code>.no</code>, <code>.com</code></li>
+                            </ul>
+                            <p>Eksempel: <code>www.zapsiteub.no</code></p>
+                            <h3>Vanlige TLD-er</h3>
+                            <ul>
+                                <li><code>.no</code> - Norske domener</li>
+                                <li><code>.com</code> - Internasjonale domener</li>
+                                <li><code>.org</code> - Organisasjoner</li>
+                                <li><code>.net</code> - Nettverk</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: "Typer Webhosting",
+                        content: `
+                            <h2>Typer Webhosting</h2>
+                            <p>Det finnes flere typer webhosting. Her er de vanligste:</p>
+                            <h3>Shared Hosting</h3>
+                            <p>Deler server med andre nettsider. Billig og enkelt, perfekt for små nettsider.</p>
+                            <h3>VPS (Virtual Private Server)</h3>
+                            <p>Din egen virtuelle server. Mer kontroll og bedre ytelse, men dyrere.</p>
+                            <h3>Cloud Hosting</h3>
+                            <p>Skalerbar løsning som vokser med dine behov. Betaler kun for det du bruker.</p>
+                            <h3>Dedicated Hosting</h3>
+                            <p>Din egen fysiske server. Maksimal ytelse og kontroll, men dyrt.</p>
+                            <h3>For begynnere?</h3>
+                            <p>Start med shared hosting. Det er billigst og enkeltst å bruke!</p>
+                        `
+                    },
+                    {
+                        title: "Kom i Gang - Steg-for-Steg",
+                        content: `
+                            <h2>Kom i Gang - Steg-for-Steg</h2>
+                            <p>Her er hvordan du kommer i gang med hosting og domene:</p>
+                            <h3>Steg 1: Velg Webhosting</h3>
+                            <ol>
+                                <li>Sammenlign ulike hosting-tilbydere</li>
+                                <li>Se etter god pris, support og oppetid</li>
+                                <li>Kjøp hosting-pakken som passer dine behov</li>
+                            </ol>
+                            <h3>Steg 2: Kjøp Domene</h3>
+                            <ol>
+                                <li>Sjekk om domenet du vil ha er ledig</li>
+                                <li>Kjøp domenet (ofte kan du kjøpe det samme sted som hosting)</li>
+                                <li>Koble domenet til hosting-kontoen din</li>
+                            </ol>
+                            <h3>Steg 3: Last opp Nettsiden</h3>
+                            <ol>
+                                <li>Bruke FTP eller kontrollpanelet til hosting-tilbyderen</li>
+                                <li>Last opp HTML, CSS, JavaScript og andre filer</li>
+                                <li>Sjekk at nettsiden fungerer!</li>
+                            </ol>
+                            <h3>Populære Hosting-tilbydere i Norge</h3>
+                            <ul>
+                                <li>Domeneshop</li>
+                                <li>ProISP</li>
+                                <li>Hegy</li>
+                                <li>One.com</li>
+                            </ul>
+                        `
+                    }
+                ]
+            }
+        };
+
+        // State
+        let currentCourse = null;
+        let currentLesson = 1;
+
+        // Course Selection
+        document.querySelectorAll('.course-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const courseId = this.getAttribute('data-course');
+                selectCourse(courseId);
+            });
+        });
+
+        function selectCourse(courseId) {
+            currentCourse = courseId;
+            currentLesson = 1;
+            
+            // Switch views
+            document.getElementById('coursesContainer').classList.remove('active');
+            document.getElementById('lessonsContainer').classList.add('active');
+            
+            loadLesson(courseId, currentLesson);
+        }
+
+        function backToCourses() {
+            document.getElementById('lessonsContainer').classList.remove('active');
+            document.getElementById('coursesContainer').classList.add('active');
+            currentCourse = null;
+            currentLesson = 1;
+        }
+
+        function loadLesson(courseId, lessonNumber) {
+            const course = courses[courseId];
+            const lesson = course.lessons[lessonNumber - 1];
+            
+            const lessonContent = document.getElementById('lessonContent');
+            
+            if (lesson.quiz) {
+                // Render quiz
+                let quizHTML = `
+                    <div class="quiz-container">
+                        <h3 style="margin-bottom: 1rem;">${lesson.question}</h3>
+                        <div class="quiz-options">
+                `;
+                
+                lesson.options.forEach((option, index) => {
+                    quizHTML += `
+                        <div class="quiz-option" onclick="checkAnswer(this, ${option.correct})">
+                            ${option.text}
+                        </div>
+                    `;
+                });
+                
+                quizHTML += `
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+                `;
+                
+                lessonContent.innerHTML = quizHTML;
+            } else {
+                // Render regular lesson - remove the duplicate h2 title
+                lessonContent.innerHTML = lesson.content;
+            }
+            
+            // Update navigation
+            updateNavigation(courseId, lessonNumber, course.lessons.length);
+            
+            // Update progress
+            updateProgress(lessonNumber, course.lessons.length);
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateNavigation(courseId, lessonNumber, totalLessons) {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            prevBtn.disabled = lessonNumber <= 1;
+            
+            if (lessonNumber >= totalLessons) {
+                nextBtn.textContent = 'Fullfør kurs';
+            } else {
+                nextBtn.textContent = 'Neste';
+            }
+        }
+
+        function updateProgress(lessonNumber, totalLessons) {
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            
+            const progress = (lessonNumber / totalLessons) * 100;
+            progressBar.style.width = progress + '%';
+            progressText.textContent = `${lessonNumber} av ${totalLessons}`;
+        }
+
+        function navigateLesson(direction) {
+            const course = courses[currentCourse];
+            const totalLessons = course.lessons.length;
+            
+            if (direction === 'prev' && currentLesson > 1) {
+                currentLesson--;
+            } else if (direction === 'next' && currentLesson < totalLessons) {
+                currentLesson++;
+            } else if (direction === 'next' && currentLesson >= totalLessons) {
+                // Course completed
+                backToCourses();
+                return;
+            }
+            
+            loadLesson(currentCourse, currentLesson);
+        }
+
+        function checkAnswer(element, isCorrect) {
+            const options = element.parentElement.querySelectorAll('.quiz-option');
+            const feedback = element.parentElement.querySelector('.quiz-feedback');
+            
+            // Disable all options
+            options.forEach(opt => {
+                opt.style.pointerEvents = 'none';
+                if (opt.getAttribute('data-correct') === 'true') {
+                    opt.style.backgroundColor = 'var(--accent-success)';
+                    opt.style.color = 'white';
+                }
+            });
+            
+            if (isCorrect) {
+                element.style.backgroundColor = 'var(--accent-success)';
+                element.style.color = 'white';
+                feedback.textContent = '✓ Riktig svar!';
+                feedback.style.color = 'var(--accent-success)';
+                feedback.style.display = 'block';
+            } else {
+                element.style.backgroundColor = 'var(--accent-error)';
+                element.style.color = 'white';
+                feedback.textContent = '✗ Feil svar. Prøv igjen!';
+                feedback.style.color = 'var(--accent-error)';
+                feedback.style.display = 'block';
+                
+                // Re-enable after delay
+                setTimeout(() => {
+                    options.forEach(opt => {
+                        opt.style.pointerEvents = 'auto';
+                        opt.style.backgroundColor = '';
+                        opt.style.color = '';
+                    });
+                    feedback.style.display = 'none';
+                }, 2000);
+            }
+        }
+    </script>
+</body>
+</html>

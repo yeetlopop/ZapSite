@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Møt teamet bak ZapSite UB. Felix, Joakim, Mohamed og Matin - engasjerte studenter som skaper profesjonelle nettsider.">
+    <meta name="keywords" content="team, ZapSite UB, studenter, ungdomsbedrift">
+    <title>Team | ZapSite UB</title>
+    <link rel="stylesheet" href="global.css">
+    <style>
+        .team-card {
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.02) 0%, rgba(139, 92, 246, 0.02) 100%);
+        }
+        
+        .team-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+        }
+        
+        .team-image-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+            border: 4px solid rgba(59, 130, 246, 0.1);
+            transition: all var(--transition-normal);
+        }
+        
+        .team-card:hover .team-image-container {
+            box-shadow: 0 12px 30px rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .team-image-regular,
+        .team-image-hover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity var(--transition-normal);
+        }
+        
+        .team-image-regular {
+            opacity: 1;
+        }
+        
+        .team-image-hover {
+            opacity: 0;
+        }
+        
+        .team-card:hover .team-image-regular {
+            opacity: 0;
+        }
+        
+        .team-card:hover .team-image-hover {
+            opacity: 1;
+        }
+        
+        .team-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-role {
+            color: var(--accent-purple);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .team-description {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .team-section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .team-section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+<script src="global.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-z-square">Z</div>
+                <span class="logo-text">ZapSite UB</span>
+            </a>
+            <button class="mobile-menu-toggle">☰</button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Hjem</a></li>
+                <li><a href="tjenester.html">Tjenester</a></li>
+                <li><a href="priser.html">Priser</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="mentorer.html">Mentorer</a></li>
+                <li><a href="tutorial.html">Tutorial</a></li>
+                <li><a href="om-oss.html">Om oss</a></li>
+                <li><a href="kontakt.html" class="cta-button">Kontakt oss</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="container text-center">
+            <h1 style="color: white; font-size: 3rem; margin-bottom: 1rem;">Møt Teamet</h1>
+            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.25rem; max-width: 700px; margin: 0 auto;">Engasjerte studenter fra Åssiden videregående skole som brenner for å skape profesjonelle nettsider for småbedrifter.</p>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section section-white">
+        <div class="container">
+            <div class="team-section-header">
+                <h2>Vårt Team</h2>
+                <p>Fremtidens webutviklere og designere</p>
+            </div>
+            <div class="grid grid-4">
+                <!-- Felix -->
+                <div class="card team-card fade-in">
+                    <div class="team-image-container">
+                        <img src="images/team/Felix.webp" alt="Felix - ZapSite UB Team" class="team-image-regular">
+                        <img src="images/team/Felix_hover.webp" alt="Felix - ZapSite UB Team Hover" class="team-image-hover">
+                    </div>
+                    <h3 class="team-name">Felix</h3>
+                    <p class="team-role">Teammedlem</p>
+                    <p class="team-description">Felix er en kreativ person med stor interesse for design og brukeropplevelse. Han bidrar med innovative løsninger og et øye for detaljer.</p>
+                </div>
+                
+                <!-- Joakim -->
+                <div class="card team-card fade-in-delay-1">
+                    <div class="team-image-container">
+                        <img src="images/team/Joakim.webp" alt="Joakim - ZapSite UB Team" class="team-image-regular">
+                        <img src="images/team/Joakim_hover.webp" alt="Joakim - ZapSite UB Team Hover" class="team-image-hover">
+                    </div>
+                    <h3 class="team-name">Joakim</h3>
+                    <p class="team-role">Teammedlem</p>
+                    <p class="team-description">Joakim har en sterk teknisk bakgrunn og er lidenskapelig opptatt av webutvikling. Han sørger for at nettsidene våre er raske, sikre og fungerer perfekt.</p>
+                </div>
+                
+                <!-- Mohamed -->
+                <div class="card team-card fade-in-delay-2">
+                    <div class="team-image-container">
+                        <img src="images/team/Mohamed.webp" alt="Mohamed - ZapSite UB Team" class="team-image-regular">
+                        <img src="images/team/Mohamed_hover.webp" alt="Mohamed - ZapSite UB Team Hover" class="team-image-hover">
+                    </div>
+                    <h3 class="team-name">Mohamed</h3>
+                    <p class="team-role">Teammedlem</p>
+                    <p class="team-description">Mohamed er en løsningsorientert person med gode kommunikasjonsevner. Han hjelper kunder med å forstå tekniske løsninger på en enkel måte.</p>
+                </div>
+                
+                <!-- Matin -->
+                <div class="card team-card fade-in-delay-3">
+                    <div class="team-image-container">
+                        <img src="images/team/Matin.jpg" alt="Matin - ZapSite UB Team" class="team-image-regular">
+                        <img src="images/team/Matin_hover.webp" alt="Matin - ZapSite UB Team Hover" class="team-image-hover">
+                    </div>
+                    <h3 class="team-name">Matin</h3>
+                    <p class="team-role">Teammedlem</p>
+                    <p class="team-description">Matin er en strukturert og pålitelig teammedlem som sørger for at alle prosjekter blir levert til avtalt tid og i høyeste kvalitet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Our Work -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="grid grid-2" style="align-items: center;">
+                <div class="fade-in">
+                    <h2>Hvordan Vi Jobber</h2>
+                    <p>Som en ungdomsbedrift fra Åssiden videregående skole lærer vi om entreprenørskap i praksis. Vi kombinerer teoretisk kunnskap med praktisk erfaring for å levere profesjonelle løsninger.</p>
+                    <p>Vårt team arbeider tett sammen med mentorer fra bransjen for å sikre høyeste kvalitet i alle våre prosjekter. Vi er lærevillige, engasjerte og klar for å hjelpe din bedrift med å lykkes på nettet.</p>
+                    <div style="margin-top: var(--spacing-lg);">
+                        <div style="display: flex; gap: var(--spacing-md); flex-wrap: wrap;">
+                            <span class="badge badge-primary">Webdesign</span>
+                            <span class="badge badge-primary">Utvikling</span>
+                            <span class="badge badge-primary">Kundeservice</span>
+                            <span class="badge badge-primary">Prosjektledelse</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center fade-in-delay-1">
+                    <div style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                        <div style="font-size: 5rem; margin-bottom: 1rem;">🎓</div>
+                        <h3 style="color: var(--accent-purple); margin-bottom: 1rem;">Ungdomsbedrift</h3>
+                        <p style="color: var(--text-medium);">Vi er en del av Ungdomsbedrift-programmet som lærer unge mennesker entreprenørskap og bedriftsdrift i praksis.</p>
+                        <a href="om-oss.html" class="btn btn-primary" style="margin-top: 1rem;">Les mer om oss</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container text-center cta-content">
+            <h2>Jobb Med Oss</h2>
+            <p>Vi er klare for å hjelpe din bedrift med å skape en profesjonell nettside. Kontakt oss i dag for en uforpliktende prat!</p>
+            <a href="kontakt.html" class="btn btn-large">Kontakt oss</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>
+                        <div class="footer-logo-z">Z</div>
+                        ZapSite UB
+                    </h3>
+                    <p>Profesjonelle nettsider til studentvennlige priser. Vi er en ungdomsbedrift som brenner for å hjelpe småbedrifter med digital tilstedeværelse.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61582088922505" target="_blank" rel="noopener" title="Facebook">
+                            <img src="images/social/facebook.png" alt="Facebook">
+                        </a>
+                        <a href="https://www.instagram.com/ZapSiteUB/" target="_blank" rel="noopener" title="Instagram">
+                            <img src="images/social/instagram.png" alt="Instagram">
+                        </a>
+                        <a href="https://www.tiktok.com/@ZapSiteUB" target="_blank" rel="noopener" title="TikTok">
+                            <img src="images/social/tiktok.png" alt="TikTok">
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontakt Oss</h4>
+                    <div class="footer-info-grid">
+                        <div class="footer-info-item">
+                            <span class="icon">📧</span>
+                            <p><a href="mailto:zapsiteub@gmail.com">zapsiteub@gmail.com</a></p>
+                        </div>
+                        <div class="footer-info-item">
+                            <span class="icon">📞</span>
+                            <p><a href="tel:+4794979453">+47 949 79 453</a></p>
+                        </div>
+                        <div class="footer-info-item">
+                            <span class="icon">🏫</span>
+                            <p>Åssiden VGS</p>
+                        </div>
+                        <div class="footer-info-item">
+                            <span class="icon">📋</span>
+                            <p>Org: 936295886</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Veldedighet</h4>
+                    <p>❤️ Vi donerer 5% av overskuddet til Røde Kors</p>
+                    <h4 style="margin-top: 1.5rem;">Skole</h4>
+                    <p>🎓 Ungdomsbedrift ved Åssiden videregående skole</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p>© 2025 ZapSite UB. Alle rettigheter reservert.</p>
+                    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Tilbake til toppen">
+                        ↑
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="global.js"></script>
+</body>
+</html>
