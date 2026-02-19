@@ -447,14 +447,7 @@ img {
 .logo-z-square {
     width: 45px;
     height: 45px;
-    background: var(--gradient-primary);
     border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.75rem;
-    font-weight: 900;
-    color: white;
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4), 0 0 20px rgba(139, 92, 246, 0.3);
     transition: all var(--transition-normal);
     position: relative;
